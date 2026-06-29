@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Container version="2">
+  <Name>Executor</Name>
+  <Repository>ghcr.io/rhyssullivan/executor-selfhost:latest</Repository>
+  <Registry>https://github.com/RhysSullivan/executor/pkgs/container/executor-selfhost</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+
+  <Support>https://github.com/sethrcarlton/unraid-templates/issues</Support>
+  <Project>https://github.com/RhysSullivan/executor</Project>
+  <ReadMe>https://executor.sh/docs/hosted/docker</ReadMe>
+  <TemplateURL>https://raw.githubusercontent.com/sethrcarlton/unraid-templates/main/templates/executor.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/sethrcarlton/unraid-templates/main/images/executor.png</Icon>
+
+  <Overview>Unofficial Unraid template for Executor, a self-hosted integration layer for AI agents.</Overview>
+
+  <Description>
+Executor lets AI agents call OpenAPI, MCP, GraphQL, and custom JavaScript functions from a self-hosted server.
+
+This template uses the official Executor self-host Docker image.
+
+Unraid-specific notes:
+- Persistent app data is mapped to /data.
+- Set EXECUTOR_WEB_BASE_URL when using a reverse proxy, domain, or TLS.
+  </Description>
+
+  <Category>Tools:Utilities</Category>
+  <WebUI>http://[IP]:[PORT:4788]</WebUI>
+
+  <Config
+    Name="WebUI"
+    Target="4788"
+    Default="4788"
+    Mode="tcp"
+    Description="Container Port: 4788"
+    Type="Port"
+    Display="always"
+    Required="true"
+    Mask="false">4788</Config>
+
+  <Config
+    Name="Data"
+    Target="/data"
+    Default="/mnt/user/appdata/executor"
+    Mode="rw"
+    Description="Persistent app data. Executor stores its database and generated keys here. Back this folder up."
+    Type="Path"
+    Display="always"
+    Required="true"
+    Mask="false">/mnt/user/appdata/executor</Config>
+
+  <Config
+    Name="Public Base URL"
+    Target="EXECUTOR_WEB_BASE_URL"
+    Default=""
+    Mode=""
+    Description="Exact public URL users open, for example https://executor.example.com or http://192.168.1.10:4788. Set this when using a reverse proxy, domain, or TLS."
+    Type="Variable"
+    Display="always"
+    Required="false"
+    Mask="false"></Config>
+
+  <Config
+    Name="Allow Local Network"
+    Target="EXECUTOR_ALLOW_LOCAL_NETWORK"
+    Default="false|true"
+    Mode=""
+    Description="Allow sandboxed code to reach loopback or private network addresses. Leave false unless you need agents to call local LAN services."
+    Type="Variable"
+    Display="advanced"
+    Required="false"
+    Mask="false">false</Config>
+</Container>
