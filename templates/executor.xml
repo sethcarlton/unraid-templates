@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Container version="2">
-  <Name>Executor</Name>
+  <Name>executor</Name>
   <Repository>ghcr.io/rhyssullivan/executor-selfhost:latest</Repository>
   <Registry>https://github.com/RhysSullivan/executor/pkgs/container/executor-selfhost</Registry>
   <Network>bridge</Network>
