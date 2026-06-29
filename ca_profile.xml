@@ -5,7 +5,7 @@ Unofficial Unraid Docker templates for self-hosted applications.
 
 Template-specific support is handled through this repository. Application-level issues should be reported to the upstream project when appropriate.
   </Profile>
-  <Icon>https://raw.githubusercontent.com/sethrcarlton/unraid-templates/main/images/profile.svg</Icon>
-  <WebPage>https://github.com/sethrcarlton/unraid-templates</WebPage>
-  <Forum>https://github.com/sethrcarlton/unraid-templates/issues</Forum>
+  <Icon>https://raw.githubusercontent.com/sethcarlton/unraid-templates/main/images/profile.svg</Icon>
+  <WebPage>https://github.com/sethcarlton/unraid-templates</WebPage>
+  <Forum>https://github.com/sethcarlton/unraid-templates/issues</Forum>
 </CommunityApplications>

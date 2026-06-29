@@ -8,11 +8,11 @@
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
 
-  <Support>https://github.com/sethrcarlton/unraid-templates/issues</Support>
+  <Support>https://github.com/sethcarlton/unraid-templates/issues</Support>
   <Project>https://github.com/RhysSullivan/executor</Project>
   <ReadMe>https://executor.sh/docs/hosted/docker</ReadMe>
-  <TemplateURL>https://raw.githubusercontent.com/sethrcarlton/unraid-templates/main/templates/executor.xml</TemplateURL>
-  <Icon>https://raw.githubusercontent.com/sethrcarlton/unraid-templates/main/images/executor.png</Icon>
+  <TemplateURL>https://raw.githubusercontent.com/sethcarlton/unraid-templates/main/templates/executor.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/sethcarlton/unraid-templates/main/images/executor.png</Icon>
 
   <Overview>Unofficial Unraid template for Executor, a self-hosted integration layer for AI agents.</Overview>
 
