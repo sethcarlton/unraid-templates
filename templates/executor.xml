@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Container version="2">
   <Name>executor</Name>
-  <Repository>ghcr.io/rhyssullivan/executor-selfhost:latest</Repository>
-  <Registry>https://github.com/RhysSullivan/executor/pkgs/container/executor-selfhost</Registry>
+  <Repository>ghcr.io/usefulsoftwareco/executor-selfhost:latest</Repository>
+  <Registry>https://github.com/UsefulSoftwareCo/executor/pkgs/container/executor-selfhost</Registry>
   <Network>bridge</Network>
   <MyIP/>
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
 
   <Support>https://github.com/sethcarlton/unraid-templates/issues</Support>
-  <Project>https://github.com/RhysSullivan/executor</Project>
+  <Project>https://github.com/UsefulSoftwareCo/executor</Project>
   <ReadMe>https://executor.sh/docs/hosted/docker</ReadMe>
   <TemplateURL>https://raw.githubusercontent.com/sethcarlton/unraid-templates/main/templates/executor.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/sethcarlton/unraid-templates/main/images/executor.png</Icon>

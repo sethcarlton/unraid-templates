@@ -8,7 +8,7 @@ This repository maintains Unraid template metadata. Application behavior, setup 
 
 | App | Template | Project | Docs |
 | --- | --- | --- | --- |
-| Executor | `templates/executor.xml` | https://github.com/RhysSullivan/executor | https://executor.sh |
+| Executor | `templates/executor.xml` | https://github.com/UsefulSoftwareCo/executor | https://executor.sh |
 
 See [NOTICE.md](NOTICE.md) for third-party project and licensing notes.
 

@@ -8,5 +8,5 @@ Applications, container images, names, logos, and other third-party assets remai
 
 Executor project and licensing information:
 
-- Project: https://github.com/RhysSullivan/executor
-- License: https://github.com/RhysSullivan/executor/blob/main/LICENSE
+- Project: https://github.com/UsefulSoftwareCo/executor
+- License: https://github.com/UsefulSoftwareCo/executor/blob/main/LICENSE
