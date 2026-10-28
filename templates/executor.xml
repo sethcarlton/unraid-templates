@@ -44,13 +44,13 @@ Unraid-specific notes:
   <Config
     Name="Data"
     Target="/app/data"
-    Default="/mnt/user/appdata/executor-v2"
+    Default="/mnt/user/appdata/executor"
     Mode="rw"
     Description="Persistent app data. Executor stores its database, app builds, and generated keys here. Back this folder up."
     Type="Path"
     Display="always"
     Required="true"
-    Mask="false">/mnt/user/appdata/executor-v2</Config>
+    Mask="false">/mnt/user/appdata/executor</Config>
 
   <Config
     Name="Public URL"
