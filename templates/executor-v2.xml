@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Container version="2">
+  <Name>executor-v2</Name>
+  <Repository>ghcr.io/usefulsoftwareco/executor-selfhost:beta</Repository>
+  <Registry>https://github.com/UsefulSoftwareCo/executor/pkgs/container/executor-selfhost</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+
+  <Support>https://github.com/sethcarlton/unraid-templates/issues</Support>
+  <Project>https://github.com/UsefulSoftwareCo/executor</Project>
+  <ReadMe>https://executor.sh/docs/run/self-host</ReadMe>
+  <TemplateURL>https://raw.githubusercontent.com/sethcarlton/unraid-templates/main/templates/executor-v2.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/sethcarlton/unraid-templates/main/images/executor.png</Icon>
+
+  <Overview>Unofficial Unraid template for Executor v2 (beta), a self-hosted integration layer for AI agents.</Overview>
+
+  <Description>
+Executor lets AI agents use your apps and accounts through one MCP endpoint, with approvals for sensitive calls.
+
+This template uses the official Executor self-host Docker image on the beta channel. Executor v2 starts with fresh data; it does not read Executor v1 data.
+
+Unraid-specific notes:
+- Persistent app data is mapped to /app/data.
+- Set BETTER_AUTH_URL to the exact public URL when using a reverse proxy, domain, or TLS.
+- The first person to finish setup becomes the owner.
+  </Description>
+
+  <Category>Tools:Utilities</Category>
+  <WebUI>http://[IP]:[PORT:4400]</WebUI>
+
+  <Config
+    Name="WebUI"
+    Target="4400"
+    Default="4400"
+    Mode="tcp"
+    Description="Container Port: 4400"
+    Type="Port"
+    Display="always"
+    Required="true"
+    Mask="false">4400</Config>
+
+  <Config
+    Name="Data"
+    Target="/app/data"
+    Default="/mnt/user/appdata/executor-v2"
+    Mode="rw"
+    Description="Persistent app data. Executor stores its database, app builds, and generated keys here. Back this folder up."
+    Type="Path"
+    Display="always"
+    Required="true"
+    Mask="false">/mnt/user/appdata/executor-v2</Config>
+
+  <Config
+    Name="Public URL"
+    Target="BETTER_AUTH_URL"
+    Default=""
+    Mode=""
+    Description="Exact public URL users open, for example https://executor.example.com. Browser sign-in fails if the scheme, host, or port differ. Defaults to http://localhost:4400."
+    Type="Variable"
+    Display="always"
+    Required="false"
+    Mask="false"></Config>
+
+  <Config
+    Name="Allow Private Network"
+    Target="EXECUTOR_APPS_ALLOW_PRIVATE_FETCH"
+    Default="false|true"
+    Mode=""
+    Description="Let app code reach private network addresses, such as LAN services. Every app shares this access. Leave false unless you need it."
+    Type="Variable"
+    Display="advanced"
+    Required="false"
+    Mask="false">false</Config>
+</Container>
