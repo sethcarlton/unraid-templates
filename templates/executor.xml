@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Container version="2">
   <Name>executor</Name>
-  <Repository>ghcr.io/usefulsoftwareco/executor-selfhost:latest</Repository>
+  <Repository>ghcr.io/usefulsoftwareco/executor-selfhost:beta</Repository>
   <Registry>https://github.com/UsefulSoftwareCo/executor/pkgs/container/executor-selfhost</Registry>
   <Network>bridge</Network>
   <MyIP/>
@@ -10,66 +10,89 @@
 
   <Support>https://github.com/sethcarlton/unraid-templates/issues</Support>
   <Project>https://github.com/UsefulSoftwareCo/executor</Project>
-  <ReadMe>https://executor.sh/docs/hosted/docker</ReadMe>
+  <ReadMe>https://executor.sh/docs/run/self-host</ReadMe>
   <TemplateURL>https://raw.githubusercontent.com/sethcarlton/unraid-templates/main/templates/executor.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/sethcarlton/unraid-templates/main/images/executor.png</Icon>
 
   <Overview>Unofficial Unraid template for Executor, a self-hosted integration layer for AI agents.</Overview>
 
   <Description>
-Executor lets AI agents call OpenAPI, MCP, GraphQL, and custom JavaScript functions from a self-hosted server.
+Executor lets AI agents use your apps and accounts through one MCP endpoint, with approvals for sensitive calls.
 
-This template uses the official Executor self-host Docker image.
+This template uses the official Executor self-host Docker image. Executor v2 starts with fresh data; it does not read Executor v1 data.
 
 Unraid-specific notes:
-- Persistent app data is mapped to /data.
-- Set EXECUTOR_WEB_BASE_URL when using a reverse proxy, domain, or TLS.
+- Persistent app data is mapped to /app/data.
+- Set BETTER_AUTH_URL to the exact public URL when using a reverse proxy, domain, or TLS.
+- The first person to finish setup becomes the owner.
   </Description>
 
   <Category>Tools:Utilities</Category>
-  <WebUI>http://[IP]:[PORT:4788]</WebUI>
+  <WebUI>http://[IP]:[PORT:4400]</WebUI>
 
   <Config
     Name="WebUI"
-    Target="4788"
-    Default="4788"
+    Target="4400"
+    Default="4400"
     Mode="tcp"
-    Description="Container Port: 4788"
+    Description="Container Port: 4400"
     Type="Port"
     Display="always"
     Required="true"
-    Mask="false">4788</Config>
+    Mask="false">4400</Config>
 
   <Config
     Name="Data"
-    Target="/data"
-    Default="/mnt/user/appdata/executor"
+    Target="/app/data"
+    Default="/mnt/user/appdata/executor-v2"
     Mode="rw"
-    Description="Persistent app data. Executor stores its database and generated keys here. Back this folder up."
+    Description="Persistent app data. Executor stores its database, app builds, and generated keys here. Back this folder up."
     Type="Path"
     Display="always"
     Required="true"
-    Mask="false">/mnt/user/appdata/executor</Config>
+    Mask="false">/mnt/user/appdata/executor-v2</Config>
 
   <Config
-    Name="Public Base URL"
-    Target="EXECUTOR_WEB_BASE_URL"
+    Name="Public URL"
+    Target="BETTER_AUTH_URL"
     Default=""
     Mode=""
-    Description="Exact public URL users open, for example https://executor.example.com or http://192.168.1.10:4788. Set this when using a reverse proxy, domain, or TLS."
+    Description="Exact public URL users open, for example https://executor.example.com. Browser sign-in fails if the scheme, host, or port differ. Defaults to http://localhost:4400."
     Type="Variable"
     Display="always"
     Required="false"
     Mask="false"></Config>
 
   <Config
-    Name="Allow Local Network"
-    Target="EXECUTOR_ALLOW_LOCAL_NETWORK"
+    Name="Allow Private Network"
+    Target="EXECUTOR_APPS_ALLOW_PRIVATE_FETCH"
     Default="false|true"
     Mode=""
-    Description="Allow sandboxed code to reach loopback or private network addresses. Leave false unless you need agents to call local LAN services."
+    Description="Let app code reach private network addresses, such as LAN services. Every app shares this access. Leave false unless you need it."
     Type="Variable"
     Display="advanced"
     Required="false"
     Mask="false">false</Config>
+
+  <Config
+    Name="App Catalog URL"
+    Target="EXECUTOR_CATALOG_URL"
+    Default="https://catalog.executor.sh/index.json"
+    Mode=""
+    Description="index.json of the app feed that Add app lists. Leave empty to list only the built-in Executor app."
+    Type="Variable"
+    Display="advanced"
+    Required="false"
+    Mask="false">https://catalog.executor.sh/index.json</Config>
+
+  <Config
+    Name="OAuth Client Metadata URL"
+    Target="EXECUTOR_OAUTH_CLIENT_METADATA_URL"
+    Default=""
+    Mode=""
+    Description="Set to your Public URL plus /oauth/client-metadata.json so services that accept client ID metadata documents can identify Executor. It must be reachable publicly over HTTPS."
+    Type="Variable"
+    Display="advanced"
+    Required="false"
+    Mask="false"></Config>
 </Container>
